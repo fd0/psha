@@ -42,6 +42,10 @@ func worker(wg *sync.WaitGroup, paths <-chan string, output chan<- string) {
 			continue
 		}
 
+		if hash != filepath.Base(p) {
+			fmt.Fprintf(os.Stderr, "wrong hash for %v: wanted %v\n", p, hash)
+		}
+
 		output <- fmt.Sprintf("%v  %v", hash, p)
 	}
 }
