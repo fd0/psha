@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
 	"io"
@@ -9,6 +8,8 @@ import (
 	"path/filepath"
 	"runtime"
 	"sync"
+
+	"github.com/minio/sha256-simd"
 )
 
 func computeSHA256(p string) (string, error) {
